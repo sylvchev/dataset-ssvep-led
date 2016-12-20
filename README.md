@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This dataset gathers SSVEP-based BCI recordings of 5 subjects focusing on 3 groups of LED blinking at differents frequencies.
+This dataset gathers SSVEP-based BCI recordings of 4 subjects focusing on 3 groups of LED blinking at differents frequencies (see update section).
 
 
 ## Related publications:
@@ -18,7 +18,7 @@ The g.Mobilab+ device is used for recording EEG at 256 Hz on 8 channels. For SSV
 
 ## Data description
 
-The datasets contains 5 directories, containing recording from 5 male and female subjects aged between 22 and 30 years old. Informed consent was obtained from all subjects, each one has signed a form attesting her or his consent.
+The datasets contains 4 directories, containing recording from 5 male and female subjects aged between 22 and 30 years old. Informed consent was obtained from all subjects, each one has signed a form attesting her or his consent.
 
 The subjects were seated comfortably in a chair facing the computer screen placed at about 60 cm. Three LED arrays are placed on top, left and right sides of the computer screen and are the experimental targets.
 
@@ -27,6 +27,24 @@ the subject is supposed to look at center of the computer screen (no flash). The
 feedback was provided to the subject.
 
 The recording are saved in GDF format [1], the stimulations code for each class are available as time events. There is between 4 sessions for each user, recorded on different days, by the same operators, on the same hardware and in the same conditions.
+
+The stimulation code used in GDF file are those defined by OpenVibe:
+
+
+* ExperimentStart: 32769, 0x00008001,
+* ExperimentStop: 32770, 0x00008002
+* VisualStimulationStart: 32779, 0x0000800b
+* VisualStimulationStop: 32780, 0x0000800c
+* Label_00: 33024, 0x00008100
+* Label_01: 33025, 0x00008101
+* Label_02: 33026, 0x00008102
+* Label_03: 33027, 0x00008103
+
+The stimulation code are used as follows: *ExperimentStart* and *ExperimentStop* indicate the begining and the end of the session. A trial start with a Label_XX stimulation code indicating the class of the example, there is a 3s pause before the audio cue indicating the stimulus to focus. The audio cue onset is indicated by *VisualStimulationStart*, this is the start of the trial. The end of the trial take place 5s after and is indicated by *VisualStimulationStop*. *Label_00* is for resting class, *Label_01* is for 13Hz stimulation, *Label_02* is for 21Hz stimulation and *Label_03* is for 17Hz stimulation.
+
+## *Update*
+
+Subject 1 was removed from the repository for inconsistency in the stimulation frequencies.
 
 ## Bibliography
 
